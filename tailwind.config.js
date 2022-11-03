@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: "Cascadia Mono"
+      'sans': "Cascadia Mono"
     },
     extend: {},
   },

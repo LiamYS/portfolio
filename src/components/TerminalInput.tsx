@@ -1,30 +1,25 @@
-import React, { useState } from "react";
+import { ChangeEvent, KeyboardEvent } from "react";
 
-export const TerminalInput = () => {
-  const [terminalCommand, setTerminalCommand] = useState("");
+interface TerminalInputProps {
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
+  terminalCommand: string;
+}
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTerminalCommand(event.target.value);
-  }
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      if (terminalCommand === "1") {
-        console.log("Personal Information");
-      } else if (terminalCommand === "2") {
-        console.log("Projects");
-      } else if (terminalCommand === "3") {
-        console.log("Experience");
-      } else {
-        console.log("Invalid command");
-      }
-      setTerminalCommand("");
-    }
-  }
+export const TerminalInput = (props: TerminalInputProps) => {
   return (
     <div className="flex flex-row space-x-1.5">
-        <p><span className="text-green-500">guest@liamys.nl</span>:<span className="text-blue-800">~</span>$</p>
-        <input type="text" onKeyDown={handleKeyDown} value={terminalCommand} onChange={handleChange} className="bg-slate-50 resize-none bg-opacity-0 w-full focus:outline-none"></input>
+      <p>
+        <span className="text-green-500">guest@liamys.nl</span>:
+        <span className="text-blue-800">~</span>$
+      </p>
+      <input
+        type="text"
+        onKeyDown={props.handleKeyDown}
+        value={props.terminalCommand}
+        onChange={props.handleChange}
+        className="bg-slate-50 resize-none bg-opacity-0 w-full focus:outline-none"
+      ></input>
     </div>
-  )
-}
+  );
+};
