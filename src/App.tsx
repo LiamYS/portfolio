@@ -16,6 +16,7 @@ function App() {
   const [showPersonalInformation, setShowPersonalInformation] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showExperience, setShowExperience] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerminalCommand(event.target.value);
@@ -27,15 +28,19 @@ function App() {
         setShowPersonalInformation(true);
         setShowProjects(false);
         setShowExperience(false);
+        setShowError(false);
       } else if (terminalCommand === "2") {
         setShowPersonalInformation(false);
         setShowProjects(true);
         setShowExperience(false);
+        setShowError(false);
       } else if (terminalCommand === "3") {
         setShowPersonalInformation(false);
         setShowProjects(false);
         setShowExperience(true);
+        setShowError(false);
       } else {
+        setShowError(true);
       }
       setTerminalCommand("");
     }
@@ -75,6 +80,12 @@ function App() {
               />
               <ContentBlock isShown={showProjects} content={<Projects />} />
               <ContentBlock isShown={showExperience} content={<Experience />} />
+              <ContentBlock
+                isShown={showError}
+                content={
+                  <TerminalMessage message="This is an unvalid command, please try again." />
+                }
+              />
               <TerminalInput
                 handleChange={handleChange}
                 handleKeyDown={handleKeyDown}
