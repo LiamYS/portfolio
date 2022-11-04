@@ -9,10 +9,7 @@ interface TerminalInputProps {
 export const TerminalInput = (props: TerminalInputProps) => {
   return (
     <div className="flex flex-row space-x-1.5">
-      <p>
-        <span className="text-green-500">guest@liamys.nl</span>:
-        <span className="text-blue-800">~</span>$
-      </p>
+      <p className="text-emerald-500">guest@liamys.nl~$</p>
       <input
         type="text"
         onKeyDown={props.handleKeyDown}

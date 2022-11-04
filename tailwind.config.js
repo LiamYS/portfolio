@@ -4,10 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",    
   ],
   theme: {
-    fontFamily: {
-      'sans': "Cascadia Mono"
+    extend: {
+      fontFamily: {
+        'TerminalFont': ['"Source Code Pro"', 'monospace']
+      }
     },
-    extend: {},
   },
   plugins: [],
 }
